@@ -9,6 +9,7 @@ const initialState = {
   status: "idle", // idle | loading | succeeded | failed
   error: null,
 };
+
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   try {
     const response = await axios.get(POSTS_URL);
@@ -85,6 +86,8 @@ const postsSlice = createSlice({
 });
 
 export const selectAllPosts = (state) => state.posts.posts;
+export const getPostsStatus = (state) => state.posts.status;
+export const getPostsError = (state) => state.posts.posts.error;
 
 export const { postAdded, reactionAdded } = postsSlice.actions;
 
