@@ -2,7 +2,7 @@ import PostAuthor from "./PostAuthor";
 import ReactionButtons from "./ReactionButtons";
 import TimeAgo from "./TimeAgo";
 
-export const PostsExcerpt = ({ post }) => {
+const PostsExcerpt = ({ post }) => {
   return (
     <article>
       <h3>{post.title}</h3>
@@ -15,3 +15,5 @@ export const PostsExcerpt = ({ post }) => {
     </article>
   );
 };
+
+export default PostsExcerpt;
