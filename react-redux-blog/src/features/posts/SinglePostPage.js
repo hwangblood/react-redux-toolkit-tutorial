@@ -1,16 +1,17 @@
+import React from "react";
 import { useSelector } from "react-redux";
-import { selectedPostById } from "./postsSlice";
+import { useParams } from "react-router-dom";
+
+import { selectPostById } from "./postsSlice";
 
 import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 
-import React from "react";
-
 const SinglePostPage = () => {
-  // retrieve postId
+  const { postId } = useParams();
 
-  const post = useSelector((state) => selectedPostById(state, postId));
+  const post = useSelector((state) => selectPostById(state, Number(postId)));
 
   if (!post) {
     return (
