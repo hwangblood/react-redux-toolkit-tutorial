@@ -6,9 +6,11 @@ import App from "./App";
 import "./index.css";
 
 import { fetchUsers } from "./features/users/usersSlice";
+import { fetchPosts } from "./features/posts/postsSlice";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+store.dispatch(fetchPosts());
 store.dispatch(fetchUsers());
 
 const container = document.getElementById("root");
