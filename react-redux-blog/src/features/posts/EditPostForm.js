@@ -66,6 +66,28 @@ const EditPostForm = () => {
     </option>
   ));
 
+  const onDeletePostClicked = () => {
+    if (canSave) {
+      try {
+        setRequestStatus("pending");
+        dispatch(
+          deletePost({
+            id: post.id,
+          })
+        ).unwrap();
+
+        setTitle("");
+        setContent("");
+        setUserId("");
+        navigate(`/`);
+      } catch (err) {
+        console.error("Failed to delete the post", err);
+      } finally {
+        setRequestStatus("idle");
+      }
+    }
+  };
+
   return (
     <section>
       <h2>Edit Post</h2>
@@ -94,6 +116,9 @@ const EditPostForm = () => {
         />
         <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
           Save Post
+        </button>
+        <button type="button" onClick={onDeletePostClicked}>
+          Delete Post
         </button>
       </form>
     </section>
