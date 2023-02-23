@@ -148,6 +148,17 @@ const postsSlice = createSlice({
         action.payload.date = new Date().toISOString();
         const posts = state.posts.filter((post) => post.id !== id);
         state.posts = [...posts, action.payload];
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        if (!action.payload?.id) {
+          console.log("Update could not complete");
+          console.log(action.payload);
+          return;
+        }
+        const { id } = action.payload;
+        action.payload.date = new Date().toISOString();
+        const posts = state.posts.filter((post) => post.id !== id);
+        state.posts = posts;
       });
   },
 });
