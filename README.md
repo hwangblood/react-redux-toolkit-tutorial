@@ -8,3 +8,4 @@ Learn Modern Redux with Redux Toolkit and RTK Query in this [tutorial series](ht
 
 - [counter-app](./counter-app)
 - [react-redux-blog](./react-redux-blog)
+- [rtk-query-todo](./rtk-query-todo)
