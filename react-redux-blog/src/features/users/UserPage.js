@@ -5,10 +5,10 @@ import { selectPostByUser } from "../posts/postsSlice";
 
 const UserPage = () => {
   const { userId } = useParams();
-  const user = useSelector((state) => selectUserById(state, userId));
+  const user = useSelector((state) => selectUserById(state, Number(userId)));
 
   const postsForUser = useSelector((state) =>
-    selectPostByUser(state, Number(user.id))
+    selectPostByUser(state, Number(userId))
   );
 
   const postTiles = postsForUser.map((post) => (
