@@ -95,10 +95,8 @@ const postsSlice = createSlice({
           };
           return post;
         });
-
         // Add any fetched posts to the array
-        // state.posts = state.posts.concat(loadedPosts);
-        state.posts = loadedPosts;
+        postsAdapter.upsertMany(state, loadedPosts);
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -127,7 +125,7 @@ const postsSlice = createSlice({
           coffee: 0,
         };
         console.log(action.payload);
-        state.posts.push(action.payload);
+        postsAdapter.addOne(state, action.payload);
       })
       .addCase(updatePost.fulfilled, (state, action) => {
         if (!action.payload?.id) {
@@ -135,10 +133,8 @@ const postsSlice = createSlice({
           console.log(action.payload);
           return;
         }
-        const { id } = action.payload;
         action.payload.date = new Date().toISOString();
-        const posts = state.posts.filter((post) => post.id !== id);
-        state.posts = [...posts, action.payload];
+        postsAdapter.upsertOne(state, action.payload);
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         if (!action.payload?.id) {
@@ -147,9 +143,7 @@ const postsSlice = createSlice({
           return;
         }
         const { id } = action.payload;
-        action.payload.date = new Date().toISOString();
-        const posts = state.posts.filter((post) => post.id !== id);
-        state.posts = posts;
+        postsAdapter.removeOne(state, id);
       });
   },
 });
