@@ -5,7 +5,11 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3500" }),
   tagTypes: ["Todos"],
   endpoints: (builder) => ({
-    getTodos: builder.query({ query: () => "/todos", providesTags: ["Todos"] }),
+    getTodos: builder.query({
+      query: () => "/todos",
+      transformResponse: (res) => res.sort((a, b) => b.id - a.id),
+      providesTags: ["Todos"],
+    }),
     addTodo: builder.mutation({
       query: (todo) => ({
         url: "/todos",
