@@ -6,6 +6,6 @@ Learn Modern Redux with Redux Toolkit and RTK Query in this [tutorial series](ht
 
 ## Projects TOC
 
-- [counter-app](./counter-app)
-- [react-redux-blog](./react-redux-blog)
-- [rtk-query-todo](./rtk-query-todo)
+- [counter-app](./counter-app) (Chapter 1)
+- [react-redux-blog](./react-redux-blog) (Chapter 2 - 5)
+- [rtk-query-todo](./rtk-query-todo) (Chapter 6)
